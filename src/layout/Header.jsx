@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { NavLink } from 'react-router-dom';
 const Header = () => {
     return (
         <>
@@ -22,10 +23,11 @@ const Header = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="#action1">Trang chủ</Nav.Link>
-                            <Nav.Link href="#action1">Giới thiệu</Nav.Link>
-                            <Nav.Link href="#action1">Sản Phẩm</Nav.Link>
-                            <Nav.Link href="#action1">Tin Tức</Nav.Link>
+
+                            <NavLink to={'/'} className="nav-link">Trang chủ</NavLink>
+                            <NavLink to={'/about'} className="nav-link">Giới thiệu</NavLink>
+                            <NavLink to={'/product'} className="nav-link">Sản phẩm</NavLink>
+                            <Nav.Link href="#action1" >Tin Tức</Nav.Link>
                             <NavDropdown title="Tài Khoản" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="#action3">Đăng nhập</NavDropdown.Item>
                                 <NavDropdown.Item href="#action4">

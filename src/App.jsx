@@ -2,13 +2,32 @@ import { Button, Container, Form, Nav, NavDropdown, Navbar } from 'react-bootstr
 import './App.css'
 import Header from './layout/Header'
 import Home from './pages/Home'
+import { Route, Routes } from 'react-router-dom'
+import UserLayout from './layout/UserLayout'
+import AdminLayout from './layout/admin/AdminLayout'
+import About from './pages/About'
+import Product from './pages/Product'
+import Dashboard from './pages/admin/Dashboard'
+import CategoryManager from './pages/admin/CategoryManager'
+import ProductManager from './pages/admin/ProductManager'
 
 function App() {
 
 
   return (
     <>
-      <Home></Home>
+      <Routes>
+        <Route path='/' element={<UserLayout></UserLayout>}>
+          <Route index element={<Home></Home>}></Route>
+          <Route path='/about' element={<About></About>}></Route>
+          <Route path='/product' element={<Product></Product>}></Route>
+        </Route>
+        <Route path='/admin' element={<AdminLayout></AdminLayout>}>
+          <Route index element={<Dashboard></Dashboard>}></Route>
+          <Route path='category' element={<CategoryManager></CategoryManager>}></Route>
+          <Route path='product' element={<ProductManager></ProductManager>}></Route>
+        </Route>
+      </Routes>
     </>
   )
 }

@@ -6,7 +6,6 @@ import ProductHot from '../component/ProductHot'
 const Home = () => {
     return (
         <>
-            <Header />
             <Banner />
             <ProductHot />
         </>
