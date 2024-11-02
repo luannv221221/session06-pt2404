@@ -1,13 +1,21 @@
 import { Space, Table, Tag } from 'antd';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const CategoryManager = () => {
-    const data = [
-        { id: 1, name: 'danh mục 1', description: 'Mô tả', status: true },
-        { id: 2, name: 'danh mục 2', description: 'Mô tả', status: true },
-        { id: 3, name: 'danh mục 3', description: 'Mô tả', status: false },
-        { id: 4, name: 'danh mục 4', description: 'Mô tả', status: true },
-    ];
+    const [data, setData] = useState([]);
+    // call API 
+    const callAPI = () => {
+        fetch("http://localhost:8080/api/v1/categories").
+            then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setData(data);
+            }).catch(err => console.log(err));
+    }
+    useEffect(() => {
+        callAPI();
+    }, []);
+
     const columns = [
         {
             title: 'Id',
@@ -16,18 +24,13 @@ const CategoryManager = () => {
         },
         {
             title: 'Name',
-            dataIndex: 'name',
-            key: 'id',
-        },
-        {
-            title: 'Description',
-            dataIndex: 'description',
+            dataIndex: 'categoryName',
             key: 'id',
         },
         {
             title: 'Status',
             key: 'id',
-            dataIndex: 'status',
+            dataIndex: 'categoryStatus',
             render: (status) => (
                 <Tag color={status ? 'success' : 'red'}>
                     {status ? 'active' : 'inactive'}
