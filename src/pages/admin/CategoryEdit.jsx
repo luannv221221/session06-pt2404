@@ -1,18 +1,32 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 
-const CategoryAdd = () => {
+const CategoryEdit = () => {
+    // lấy id 
+    const { id } = useParams();
+    useEffect(() => {
+        getCategoryFormAPI();
+    }, [])
     const [dataForm, setDataForm] = useState({
         categoryName: "",
         description: "",
         categoryStatus: true
     });
     const navigate = useNavigate();
+    // call API lấy về danh mục theo id 
+    const getCategoryFormAPI = async () => {
+        const response = await axios.get(`http://localhost:8080/api/v1/categories/${id}`)
+        console.log(response.data, "Dư lie tu API theo id");
+        setDataForm(response.data);
+        console.log("formData", dataForm);
+    }
+
+
     const handleAdd = () => {
         console.log(dataForm);
-        // call API để thêm mới
-        axios.post("http://localhost:8080/api/v1/categories", dataForm)
+        // call API để cập nhật
+        axios.put(`http://localhost:8080/api/v1/categories/${id}`, dataForm)
             .then((response) => {
                 console.log(response);
                 // chuyển về trang danh sách 
@@ -65,10 +79,10 @@ const CategoryAdd = () => {
                 </div>
 
 
-                <button type="button" onClick={handleAdd} className="btn btn-primary">Thêm mới</button>
+                <button type="button" onClick={handleAdd} className="btn btn-primary">Cập nhật</button>
             </form>
         </>
     )
 }
 
-export default CategoryAdd
+export default CategoryEdit

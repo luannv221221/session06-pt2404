@@ -18,6 +18,14 @@ const CategoryManager2 = () => {
             console.log(error);
         }
     }
+    // ham xu ly xoa 
+    const handlerDelete = (id) => {
+        axios.delete(`http://localhost:8080/api/v1/categories/${id}`)
+            .then(response => {
+                console.log(response);
+                getCategoryAPI();
+            }).catch(e => alert('Danh mục đã tồn tại sản phẩm'));
+    }
     return (
         <>
 
@@ -48,8 +56,8 @@ const CategoryManager2 = () => {
                                     <td>{item.description}</td>
                                     <td>{item.categoryStatus ? 'active' : 'inactive'}</td>
                                     <td>
-                                        <a classNameName='btn btn-secondary'>Edit</a>
-                                        <a classNameName='btn btn-danger'>Delete</a>
+                                        <NavLink to={'/admin/category-edit/' + item.categoryId} className='btn btn-primary'>Edit</NavLink>
+                                        <button className='btn btn-danger' onClick={() => handlerDelete(item.categoryId)}>Delete</button>
                                     </td>
                                 </tr>
                             )
