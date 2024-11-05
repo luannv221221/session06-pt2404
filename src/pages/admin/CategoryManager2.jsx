@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom';
 
 const CategoryManager2 = () => {
 
@@ -19,11 +20,13 @@ const CategoryManager2 = () => {
     }
     return (
         <>
+
+            <NavLink to={'/admin/category-add'} className='btn btn-success'>Thêm mới</NavLink>
             <div
-                class="table-responsive"
+                className="table-responsive"
             >
                 <table
-                    class="table table-primary"
+                    className="table table-primary"
                 >
                     <thead>
                         <tr>
@@ -38,15 +41,15 @@ const CategoryManager2 = () => {
                     <tbody>
                         {categories.map((item, index) => {
                             return (
-                                <tr class="">
+                                <tr className="">
                                     <td scope="row">{index + 1}</td>
                                     <td>{item.categoryId}</td>
                                     <td>{item.categoryName}</td>
                                     <td>{item.description}</td>
                                     <td>{item.categoryStatus ? 'active' : 'inactive'}</td>
                                     <td>
-                                        <a className='btn btn-secondary'>Edit</a>
-                                        <a className='btn btn-danger'>Delete</a>
+                                        <a classNameName='btn btn-secondary'>Edit</a>
+                                        <a classNameName='btn btn-danger'>Delete</a>
                                     </td>
                                 </tr>
                             )

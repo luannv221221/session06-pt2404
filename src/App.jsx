@@ -11,6 +11,7 @@ import Dashboard from './pages/admin/Dashboard'
 import CategoryManager from './pages/admin/CategoryManager'
 import ProductManager from './pages/admin/ProductManager'
 import CategoryManager2 from './pages/admin/CategoryManager2'
+import CategoryAdd from './pages/admin/CategoryAdd'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='category' element={<CategoryManager></CategoryManager>}></Route>
           <Route path='product' element={<ProductManager></ProductManager>}></Route>
           <Route path='category2' element={<CategoryManager2></CategoryManager2>}></Route>
+          <Route path='category-add' element={<CategoryAdd></CategoryAdd>}></Route>
         </Route>
       </Routes>
     </>
