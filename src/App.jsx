@@ -10,6 +10,7 @@ import Product from './pages/Product'
 import Dashboard from './pages/admin/Dashboard'
 import CategoryManager from './pages/admin/CategoryManager'
 import ProductManager from './pages/admin/ProductManager'
+import CategoryManager2 from './pages/admin/CategoryManager2'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route index element={<Dashboard></Dashboard>}></Route>
           <Route path='category' element={<CategoryManager></CategoryManager>}></Route>
           <Route path='product' element={<ProductManager></ProductManager>}></Route>
+          <Route path='category2' element={<CategoryManager2></CategoryManager2>}></Route>
         </Route>
       </Routes>
     </>

@@ -8,7 +8,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const menu = [
     { icon: ShopOutlined, lable: 'Quản lý danh mục', route: 'category' },
     { icon: LaptopOutlined, lable: 'Quản lý sản phẩm', route: 'product' },
-    { icon: UserOutlined, lable: 'Quản lý người dùng', route: 'user' },
+    { icon: UserOutlined, lable: 'Quản lý danh mục boostrap', route: 'category2' },
 
 ]
 const items = menu.map((item) => {
